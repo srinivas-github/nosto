@@ -100,7 +100,7 @@ install_mysql_source()
 install_apache_source()
 {
     # get the source package
-    #cd ../../
+    cd ../../
 
     ApaSrc="Apache2Src"
     
@@ -127,7 +127,7 @@ install_apache_source()
 
 install_base_packages
 
-#install_mysql_source
+install_mysql_source
 
 install_apache_source
 
