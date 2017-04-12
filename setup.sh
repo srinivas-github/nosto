@@ -18,14 +18,14 @@ echo -e "\n Input: $input\n"
 
 if [ $input -eq 1 ]; then 
     cd $PACKAGE_DIR
-    echo -e "\n Vagrant up"
+    echo -e "\nVagrant up"
     vagrant up
     if [ $? -eq 0 ]; then 
         echo -e "\n Successfully Configured VM..."
     fi
 elif [ $input -eq 2 ]; then 
     cd $SOURCE_DIR
-    echo -e "\n Calling Vagrant up (From Source)"
+    echo -e "\nVagrant up "
     vagrant up
     if [ $? -eq 0 ]; then
         echo -e "\n Successfully Configured VM..."
