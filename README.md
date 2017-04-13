@@ -18,6 +18,32 @@ Reuirements:
 1. Vagrant and VirtualBox
    Please install the latest version of Vagrant: https://www.vagrantup.com/docs/installation/
    And because we will be using VirtualBox as provider, so please install that as well: https://www.virtualbox.org/
+
+In this setup, provisioning the two services: 
+1. Mysql 5.5
+2. Apache2
+
+Running the setup:
+Run the "setup.sh". This scripts asks for user input (installation method of the services).
+Enter 1 to install the service from apt-get 
+Enter 2 to install the service from Source code
+
+Testing:
+1. Login to the VM: 
+   run the following command to login to the vm:
+    shell>> vagrant ssh
+2. To Test apache2  service:
+    Port forward option in provided for apache2 service. 
+	Open a browser from host machine and enter the following IP: http://localhost:4568
+3. To Test Mysql Service:
+   cd /usr/local/mysql	on VM and run the following commands:
+   version:
+   shell> bin/mysqladmin version
+   
+   Use mysqlshow to see what databases exist:
+   shell> bin/mysqlshow
+   
+   
    
 
   
