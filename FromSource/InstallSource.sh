@@ -5,12 +5,9 @@
 # Simple MySQL server/ apache2 service config
 # 
 ###
-# Variables
-DBHOST=localhost
-DBNAME=srinudb
-DBUSER=srinu
-DBPASSWD=root123
-
+HOME_DIR="/home/vagrant"
+MYSQL_SRC="$HOME_DIR/MysqlSrc"
+APACHE2_SRC="$HOME_DIR/Apache2Src"
 
 install_base_packages()
 {
@@ -31,11 +28,10 @@ install_base_packages()
 install_mysql_source()
 {
     #get the source
-    SrcDir="MySQLSrc"
     CMCahceFile="CMakeCache.txt"
-    [[ -d $SrcDir ]] || mkdir $SrcDir
+    [[ -d $MYSQL_SRC ]] || mkdir -p $MYSQL_SRC
 
-    cd ./$SrcDir
+    cd $MYSQL_SRC
  
     #Preconfiguration steps
     echo -e "\n Preconfiguration steps"
@@ -48,8 +44,8 @@ install_mysql_source()
     apt-get source mysql-5.5
 
     # Get the source directory
-    mysql_src=$(find . -mindepth 1 -maxdepth 1 -type d)
-    cd $mysql_src
+    mysql_src_dir=$(find . -mindepth 1 -maxdepth 1 -type d)
+    cd $mysql_src_dir
 
     echo -e "\n Finding the file CMakeCache.txt"
     if [ -f "$CMCahceFile" ]; then 
@@ -107,18 +103,14 @@ install_mysql_source()
 
 install_apache_source()
 {
-    # get the source package
-    cd ../../
-
-    ApaSrc="Apache2Src"
     
-    [[ -d $ApaSrc ]] || mkdir $ApaSrc
+    [[ -d $APACHE2_SRC ]] || mkdir -p $APACHE2_SRC
 
-    cd ./$ApaSrc 
+    cd ./$APACHE2_SRC 
     echo -e "\n apt-get source apache2"
     apt-get source apache2
-    apache2_src=$(find . -mindepth 1 -maxdepth 1 -type d)
-    cd $apache2_src
+    apa_src=$(find . -mindepth 1 -maxdepth 1 -type d)
+    cd $apa_src
     echo -e "\n ./configure"
     ./configure
     if [ $? -eq 0 ]; then
