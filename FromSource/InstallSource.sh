@@ -85,15 +85,23 @@ install_mysql_source()
     echo -e "\n cd /usr/local/mysql"
     cd /usr/local/mysql
     echo -e "\n chown -R mysql ."
-    chown -R mysql .
+    sudo chown -R mysql .
     echo -e "\n chgrp -R mysql ."
-    chgrp -R mysql .
-    echo -e "\n scripts/mysql_install_db --user=mysql"
-    scripts/mysql_install_db --user=mysql
+    sudo chgrp -R mysql .
+    
+    echo -e "\nsudo bin/mysqld --initialize --user=mysql"
+    sudo bin/mysqld --initialize --user=mysql
+   
+    echo -e "\nbin/mysql_ssl_rsa_setup"
+    sudo bin/mysql_ssl_rsa_setup
+
     echo -e "\n chown -R root ."
-    chown -R root .
+    sudo chown -R root .
     echo -e "\n chown -R mysql data"
-    chown -R mysql data
+    sudo chown -R mysql data
+
+    echo -e "\nRunning mysql service.."
+    sudo bin/mysqld_safe --skip-grant-tables &
 
 }
 
