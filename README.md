@@ -13,4 +13,8 @@ Vagrant provides easy to configure, reproducible, and portable work environments
 of industry-standard technology and controlled by a single consistent workflow to help maximize 
 the productivity and flexibility.
 
-
+Reuirements:
+1. Vagrant and VirtualBox
+   Please install the latest version of Vagrant: https://www.vagrantup.com/docs/installation/
+   And because we will be using VirtualBox as provider, so please install that as well: https://www.virtualbox.org/
+  
