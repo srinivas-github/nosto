@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "hashicorp/precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.provision :shell, path: "InstallSource.sh"
-  config.vm.network :forwarded_port, guest: 80, host: 4568
+  config.vm.network :forwarded_port, guest: 80, host: 4568, auto_correct: true
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

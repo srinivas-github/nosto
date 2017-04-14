@@ -25,24 +25,56 @@ In this setup, using "Shell" provision to install and configure the below servic
 
 Running the setup:
 
-Run the "setup.sh". This scripts asks for user input (installation method of the services).
-Enter 1 to install the service from apt-get 
-Enter 2 to install the service from Source code
+Run the "setup.sh". This scripts asks for user input for choice to install the services.
+Enter 1 to install the service from apt-get and Enter 2 to install the service from Source code
+
 
 Testing:
-1. Login to the VM: 
-   run the following command to login to the vm:
-    shell>> vagrant ssh
-2. To Test apache2  service:
-    Port forward option in provided for apache2 service. 
-	Open a browser from host machine and enter the following IP: http://localhost:4568
-3. To Test Mysql Service:
-   cd /usr/local/mysql	on VM and run the following commands:
+
+
+1. Testing for Service installed from apt-get:
+
+1.1. Login to the VM: 
+     run the following command to login to the vm:
+
+     shell>> vagrant ssh
+
+
+1.2 To Test apache2  service:
+
+    Port forward option in provided Vagrnatfile. Please take a note on Port number while "Vagrant up" 
+    "auto-correct: true" is enabled, that means the host port will be changed automatically in case it 
+    collides with a port already in use. 
+    
+    Open a browser from host machine and enter the following IP: http://localhost:<portNo>
+
+
+1.3. To Test Mysql Service:
+
+     Test the mysql installed version, run the following command:
+
+     shell>>/usr/bin/mysqladmin version -uroot -proot123
+
+     Test enter mysql:
+     mysql -u root -proot123
+
+     To See the Databases:
+     /usr/bin/mysqlshow -uroot -proot123
+
+        
+
+
+2. Testing the service installed from Source:
+
+    
    version:
-   shell> bin/mysqladmin version
+   shell> /usr/local/mysql/bin/mysqladmin version
+
    
    Use mysqlshow to see what databases exist:
-   shell> bin/mysqlshow
+   shell> /usr/local/mysql/bin/mysqlshow
+
+
    
    
    
